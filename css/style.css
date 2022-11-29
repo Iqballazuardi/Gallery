@@ -1,0 +1,143 @@
+body{
+  background-color: #ccc;
+  font-family: 'Arial Narrow', Arial, sans-serif ,sans-serif;
+}
+h1{
+  font-size:80px;
+  text-align: center;
+  text-shadow: 2px 2px 5px grey;
+}
+
+.container{
+  width: 600px;
+  margin:  auto;
+  box-shadow: 0 0 3px grey;
+  border-radius: 5px;
+  padding: 30px;
+  background-color: #ddd;
+}
+
+
+.gallery li {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid grey;
+  float: left;
+  margin-right: 20px;
+}
+.gallery li span{
+  opacity: 0;
+  font-size: 20px;
+  text-shadow: 1px 0 1px rgb(228, 226, 226);
+  text-align: center;
+  line-height:120px;
+  color: white;
+  display: block;
+  border-radius: 50%;
+  width:120px;
+  height: 120px;
+  background-color: rgba(91, 89, 89, 0.418);
+  position: absolute;
+  top: 0;
+  transform: scale(0) rotate(0);
+  transition: 0.3s;
+}
+.gallery li a:hover span{
+  opacity: 1;
+  transform: scale(1) rotate(360deg);
+}
+.overlay {
+  width: 0;
+  height: 0;
+  background-color: rgba(43, 42, 42, 0);
+  position: fixed;
+  transition: 0.8s;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  overflow: hidden;
+  text-align: center;
+  
+}
+.overlay:target {
+  width: auto;
+  height: auto;
+  background-color: rgba(43, 42, 42, 0.508);
+  left:0;
+  bottom: 0;
+}
+.overlay img {
+  margin: 100px;
+  max-height: 100%;
+  box-shadow: 1px 1px 15px rgb(0, 0, 0);
+}
+.overlay:target img{
+  animation: zoomNFade 0.8s; 
+}
+.overlay .close{
+  position: absolute;
+  opacity: 0;
+  top: -150px;
+  margin-top: 50px;
+  left:50%;
+  margin-top:60px;
+  color:white;
+  text-decoration: none;
+  background-color: rgba(32, 30, 30, 0.785);
+  padding:5px;
+  border-radius: 10px;
+  transition: 0.5s;
+  box-shadow: 0 0 3px white;
+}
+.overlay .close:hover {
+  color:rgb(238, 50, 50);
+}
+.overlay:target .close{
+  opacity: 1;
+  top: 0;
+}
+ul li a.prev , a.next{
+  position:absolute;
+  text-decoration: none;
+  color:white;
+  background-color: rgba(32, 30, 30, 0.785);
+  padding:5px;
+  box-shadow: 0 0 3px white;
+  border-radius: 10px;
+  bottom:50%;
+  transition: 1s;
+  opacity: 0;
+}
+ul li a.prev{
+  left: 27%;
+}
+.overlay:target a.prev{
+  opacity:1;
+}
+.overlay:target a.next{
+  opacity:1;
+}
+a.next:hover {
+  color:rgb(238, 50, 50);
+}
+a.prev:hover{
+  color:rgb(238, 50, 50);
+}
+/* animation */
+@keyframes zoomNFade{
+  0%{
+    transform: scale(0);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+.clear{
+  clear: both;
+}
